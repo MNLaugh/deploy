@@ -5,12 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install Deno
-      run: curl -fsSL https://deno.land/x/install/install.sh | sh && ls -a $HOME
+    - name: Setup Deno
+      uses: denolib/setup-deno@master
+      with:
+        deno-version: 1.10.2
     - name: Run script
-      run: |
-        cd $HOME/.deno/bin
-        ./deno run script.ts
+      run: deno run script.ts
     # - name: Deploy documentation
     #   if: success()
     #   uses: peaceiris/actions-gh-pages@v3
