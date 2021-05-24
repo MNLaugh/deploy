@@ -6,10 +6,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install Deno
-      run: |
-      curl -fsSL https://deno.land/x/install/install.sh | sh
-      echo "export DENO_INSTALL=\"/home/runner/.deno\"" >> $HOME/.bash_profile
-      echo "export PATH=\"$DENO_INSTALL/bin:$PATH\"" >> $HOME/.bash_profile
+      run: curl -fsSL https://deno.land/x/install/install.sh | sh
+      run: echo "export DENO_INSTALL=\"/home/runner/.deno\"" >> $HOME/.bash_profile
+      run: echo "export PATH=\"$DENO_INSTALL/bin:$PATH\"" >> $HOME/.bash_profile
     - name: Run script
       run: |
         deno run script.ts
