@@ -6,7 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install Deno
-      run: curl -fsSL https://deno.land/x/install/install.sh | sh && ls $HOME
+      run: curl -fsSL https://deno.land/x/install/install.sh | sh && ls -a $HOME
     - name: Run script
       run: |
         .$HOME/.deno/bin/deno run script.ts
