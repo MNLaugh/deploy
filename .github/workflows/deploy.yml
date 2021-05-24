@@ -9,7 +9,8 @@ jobs:
       run: curl -fsSL https://deno.land/x/install/install.sh | sh && ls -a $HOME
     - name: Run script
       run: |
-        .$HOME/.deno/bin/deno run script.ts
+        cd $HOME/.deno/bin
+        ./deno run script.ts
     # - name: Deploy documentation
     #   if: success()
     #   uses: peaceiris/actions-gh-pages@v3
