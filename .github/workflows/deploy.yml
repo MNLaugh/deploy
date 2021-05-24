@@ -16,6 +16,10 @@ jobs:
       run: deno run script.ts
     - name: Action deploy
       uses: bumfo/action-deploy@v1
+      with:
+        ref: 'refs/heads/release/snapshot'  # The branch to auto deploy, default to release/snapshot
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # - name: Deploy documentation
     #   if: success()
     #   uses: peaceiris/actions-gh-pages@v3
