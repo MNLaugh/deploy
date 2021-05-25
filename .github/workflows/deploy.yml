@@ -14,7 +14,6 @@ jobs:
         deno-version: v1.x
     - name: Run script
       run: |
-      deno run script.ts
       deno compile script.ts
       zip script script
     - name: Release
