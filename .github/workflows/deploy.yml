@@ -23,7 +23,7 @@ jobs:
         name: Version 1.0.0
         tag_name: V1.0.0
         files: script.zip
-        body_path: ${{ github.workflow }}-CHANGELOG.txt
+        body_path: CHANGELOG.txt
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_REPOSITORY: devartsite/deploy
