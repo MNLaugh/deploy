@@ -11,22 +11,18 @@ jobs:
     - name: Setup Deno
       uses: denolib/setup-deno@master
       with:
-        deno-version: 1.10.2
+        deno-version: v1.x
     - name: Run script
-      run: deno run script.ts
-    - name: Action deploy
-      uses: bumfo/action-deploy@v1
+      run: |
+      deno run script.ts
+      deno compile script.ts
+      zip script script
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        ref: 'refs/heads/release/snapshot'  # The branch to auto deploy, default to release/snapshot
+        files: script.zip
+        body_path: ${{ github.workflow }}-CHANGELOG.txt
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    # - name: Deploy documentation
-    #   if: success()
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./src/.vuepress/dist
-    #     commit_message: ${{ github.event.head_commit.message }}
-    #     cname: devartsite.github.io/dftps-guide/
-    #     keep_files: true
-    #     enable_jekyll: false
+        GITHUB_REPOSITORY: devartsite/deploy
