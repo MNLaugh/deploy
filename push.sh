@@ -1,6 +1,6 @@
 #!/bin/bash
-v = "1.0.3"
-a = "v$v"
+v="1.0.3"
+a="v$v"
 
 git add .
 git commit -m "test"
