@@ -1,5 +1,5 @@
 #!/bin/bash
-v="1.0.3"
+v=$1
 a="v$v"
 
 git add .
